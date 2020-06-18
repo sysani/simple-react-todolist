@@ -2,20 +2,18 @@ import React, { Component } from 'react';
 import { Table } from 'reactstrap';
 
 function RenderList({ items }) {
-  const itemList = items.map((item) => {
+  const itemList = items.map((item, index) => {
     return (
       <tr>
-        <th scope="row">{items.length}</th>
-        <td className="fs">item[items.length-1]</td>
+        <th scope="row">{index+1}</th>
+        <td className="fs">{item}</td>
         <td><span className="fa fa-plus fa-lg"></span>Edit</td>
         <td><span className="fa fa-plus fa-lg"></span>Delete</td>
         <td className="cr"><input id="checked" type="checkbox" name="checked" /></td>
       </tr>
     )
   })
-  return (
-    {itemList}
-  );
+  return itemList;
 }
 
 class List extends Component {
@@ -36,27 +34,7 @@ class List extends Component {
               <th className="nh" colSpan="4"></th>
               <th colSpan="1">Complete?</th>
             </tr>
-            <tr>
-              <th scope="row">1</th>
-              <td className="fs">Item One</td>
-              <td><span className="fa fa-plus fa-lg"></span>Edit</td>
-              <td><span className="fa fa-plus fa-lg"></span>Delete</td>
-              <td className="cr"><input id="checked" type="checkbox" name="checked" /></td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Item Two</td>
-              <td><span className="fa fa-icon-edit fa-lg"></span>Edit</td>
-              <td><span className="fa fa-plus fa-lg"></span>Delete</td>
-              <td className="cr"><input id="checked" type="checkbox" name="checked" /></td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Item Three</td>
-              <td><span className="fa fa-icon-edit fa-lg"></span>Edit</td>
-              <td><span className="fa fa-plus fa-lg"></span>Delete</td>
-              <td className="cr"><input id="checked" type="checkbox" name="checked" /></td>
-            </tr>
+            <RenderList items={this.state.items} />
           </tbody>
         </Table>
       </div>

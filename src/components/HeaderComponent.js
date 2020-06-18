@@ -7,10 +7,8 @@ class Header extends Component {
     super(props);
     this.state= {
       isModalOpen: false,
-      items: this.props.items
     }
     this.toggleModal = this.toggleModal.bind(this);
-    this.addItem = this.addItem.bind(this);
   }
 
   toggleModal() {
@@ -19,15 +17,10 @@ class Header extends Component {
     });
   }
 
-  addItem(event) {
+  handleAdd = (event) => {
     event.preventDefault();
     alert(event.target.item.value);
-
-    this.setState({
-      items: this.state.items.push(event.target.item.value)
-    });
-
-    alert(this.state.items);
+    this.props.addItem(event.target.item.value);
     this.toggleModal();
   }
 
@@ -55,7 +48,7 @@ class Header extends Component {
           <ModalHeader toggle={this.toggleModal}>Add Item to To-Do List</ModalHeader>
           <ModalBody>
 
-            <Form onSubmit={this.addItem}>
+            <Form onSubmit={this.handleAdd}>
               <FormGroup>
                 <Label htmlFor="item">I need to...</Label>
                 <Input type="text" name="item" />

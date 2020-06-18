@@ -8,15 +8,21 @@ class Main extends Component {
     super(props);
     this.state = {
       items: ['item1', 'item2', 'item3'],
+      added: 0
     }
+    this.addItem = this.addItem.bind(this);
   }
 
-  items: ['item1', 'item2', 'item3'];
+  addItem = (item) => {
+    this.setState({
+      added: this.state.items.push(item)
+    })
+  }
 
   render() {
     return (
       <div>
-        <Header items={this.state.items} />
+        <Header items={this.state.items} addItem={this.addItem} />
         <List items={this.state.items} />
       </div>
     )
