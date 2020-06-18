@@ -11,6 +11,7 @@ class Main extends Component {
       added: 0
     }
     this.addItem = this.addItem.bind(this);
+    this.deleteItem = this.deleteItem.bind(this);
   }
 
   addItem = (item) => {
@@ -19,11 +20,18 @@ class Main extends Component {
     })
   }
 
+  deleteItem = (index) => {
+    this.state.items.splice(index, 1)
+    this.setState({
+      items: this.state.items
+    })
+  }
+
   render() {
     return (
       <div>
         <Header items={this.state.items} addItem={this.addItem} />
-        <List items={this.state.items} />
+        <List items={this.state.items} deleteItem={this.deleteItem} />
       </div>
     )
   }

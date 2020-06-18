@@ -19,7 +19,6 @@ class Header extends Component {
 
   handleAdd = (event) => {
     event.preventDefault();
-    alert(event.target.item.value);
     this.props.addItem(event.target.item.value);
     this.toggleModal();
   }

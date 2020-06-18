@@ -48,3 +48,11 @@
 .nh:hover {
   background-color: white;
 }
+
+.fa-pencil, .fa-trash {
+  padding: 25%;
+}
+
+.fa-pencil:hover, .fa-trash:hover {
+  background-color: lightgrey;
+}
