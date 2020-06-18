@@ -6,7 +6,8 @@ class Header extends Component {
   constructor(props) {
     super(props);
     this.state= {
-      isModalOpen: false
+      isModalOpen: false,
+      items: this.props.items
     }
     this.toggleModal = this.toggleModal.bind(this);
     this.addItem = this.addItem.bind(this);
@@ -18,8 +19,16 @@ class Header extends Component {
     });
   }
 
-  addItem() {
-    alert("Item added!");
+  addItem(event) {
+    event.preventDefault();
+    alert(event.target.item.value);
+
+    this.setState({
+      items: this.state.items.push(event.target.item.value)
+    });
+
+    alert(this.state.items);
+    this.toggleModal();
   }
 
   render() {
@@ -45,13 +54,15 @@ class Header extends Component {
         <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
           <ModalHeader toggle={this.toggleModal}>Add Item to To-Do List</ModalHeader>
           <ModalBody>
+
             <Form onSubmit={this.addItem}>
               <FormGroup>
                 <Label htmlFor="item">I need to...</Label>
-                <Input type="text" id="item" name="item" />
+                <Input type="text" name="item" />
               </FormGroup>
               <Button type="submit" value="submit" color="primary">Add It!</Button>
             </Form>
+
           </ModalBody>
         </Modal>
       </>
