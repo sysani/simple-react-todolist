@@ -2,57 +2,58 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
 .App-link {
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 .fs {
-  width: 80%;
+  width: 83%;
 }
 
 .cr {
   text-align: center;
 }
 
-.nh:hover {
+.thead {
   background-color: white;
 }
 
-.fa-pencil, .fa-trash {
-  padding: 25%;
+.thead:hover {
+  background-color: white;
 }
 
-.fa-pencil:hover, .fa-trash:hover {
+.fa-pencil, .fa-times {
+  padding: 10%;
+}
+
+.fa-pencil:hover, .fa-times:hover {
   background-color: lightgrey;
+  transition: all 350ms;
+}
+
+input[type=checkbox] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    /* create custom checkbox appearance */
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    padding: 6px;
+    /* background-color only for content */
+    background-clip: content-box;
+    border-radius: 50%;
+    background-color: #e7e6e7;
+    margin-left: 15px;
+    margin-right: 15px;
+    background-color: papayawhip;
+    outline: none !important;
+}
+
+input[type=checkbox]:checked {
+  outline: none !important;
+  background-color: salmon;
+  border-radius: 50%;
+  transition: all 250ms;
+  box-shadow: 0 0 0 3px pink;
 }
