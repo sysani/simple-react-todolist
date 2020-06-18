@@ -37,11 +37,14 @@
   }
 }
 
-body {
+.fs {
+  width: 80%;
+}
+
+.cr {
   text-align: center;
 }
 
-li {
-  list-style: none;
-  padding: 1%;
+.nh:hover {
+  background-color: white;
 }

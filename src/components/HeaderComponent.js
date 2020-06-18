@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Navbar, Nav, Collapse, NavItem, Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input } from 'reactstrap';
-
+import { Navbar, Nav, NavItem, Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input } from 'reactstrap';
 
 class Header extends Component {
 
@@ -20,7 +19,7 @@ class Header extends Component {
   }
 
   addItem() {
-    console.log("added");
+    alert("Item added!");
   }
 
   render() {
@@ -44,14 +43,13 @@ class Header extends Component {
         </Navbar>
 
         <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
-          <ModalHeader toggle={this.toggleModal}>Add Item to To-Do List:</ModalHeader>
+          <ModalHeader toggle={this.toggleModal}>Add Item to To-Do List</ModalHeader>
           <ModalBody>
             <Form onSubmit={this.addItem}>
               <FormGroup>
                 <Label htmlFor="item">I need to...</Label>
                 <Input type="text" id="item" name="item" />
               </FormGroup>
-              <br />
               <Button type="submit" value="submit" color="primary">Add It!</Button>
             </Form>
           </ModalBody>
