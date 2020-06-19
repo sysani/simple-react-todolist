@@ -21,7 +21,6 @@ class List extends Component {
     super(props);
     this.state= {
       items: this.props.items,
-      numItems: this.props.items.length
     }
   }
 
