@@ -7,11 +7,19 @@ class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      items: ['item1', 'item2', 'item3'],
-      added: 0
+      items: [
+        {
+          checked: false,
+          complete: '',
+          task: 'Click Add Task to add a new item and X to delete!',
+        }
+      ],
+      added: 0,
+      lbl: 'Complete?'
     }
     this.addItem = this.addItem.bind(this);
     this.deleteItem = this.deleteItem.bind(this);
+    this.toggleLbl = this.toggleLbl.bind(this);
   }
 
   addItem = (item) => {
@@ -25,13 +33,28 @@ class Main extends Component {
     this.setState({
       items: this.state.items
     })
+    this.toggleLbl(this.state.items)
+  }
+
+  toggleLbl = (items) => {
+    const tasksComplete = items.filter(task => task['checked'] == true);
+    if (items.length == 0 || tasksComplete.length == items.length) {
+      this.setState({
+        lbl: 'All Tasks Complete!'
+      })
+    }
+    else {
+      this.setState({
+        lbl: 'Complete?'
+      })
+    }
   }
 
   render() {
     return (
       <div>
-        <Header items={this.state.items} addItem={this.addItem} />
-        <List items={this.state.items} deleteItem={this.deleteItem} />
+        <Header items={this.state.items} addItem={this.addItem} toggleLbl={this.toggleLbl} />
+        <List items={this.state.items} lbl={this.state.lbl} deleteItem={this.deleteItem} toggleLbl={this.toggleLbl} />
       </div>
     )
   }

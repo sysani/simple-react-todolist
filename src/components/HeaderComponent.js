@@ -19,8 +19,9 @@ class Header extends Component {
 
   handleAdd = (event) => {
     event.preventDefault();
-    this.props.addItem(event.target.item.value);
+    this.props.addItem({checked:false, complete:'', task:event.target.item.value});
     this.toggleModal();
+    this.props.toggleLbl(this.props.items)
   }
 
   render() {
@@ -36,7 +37,7 @@ class Header extends Component {
             <Nav className="ml-auto" navbar>
               <NavItem>
                 <Button outline onClick={this.toggleModal}>
-                  <span className="fa fa-plus fa-lg"></span> Add Item
+                  <span className="fa fa-plus fa-lg"></span> Add Task
                 </Button>
               </NavItem>
             </Nav>
@@ -44,13 +45,12 @@ class Header extends Component {
         </Navbar>
 
         <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
-          <ModalHeader toggle={this.toggleModal}>Add Item to To-Do List</ModalHeader>
+          <ModalHeader toggle={this.toggleModal}>Add a Task:</ModalHeader>
           <ModalBody>
 
             <Form onSubmit={this.handleAdd}>
               <FormGroup>
-                <Label htmlFor="item">I need to...</Label>
-                <Input type="text" name="item" />
+                <Input type="text" name="item" placeholder="I need to..." />
               </FormGroup>
               <Button type="submit" value="submit" color="primary">Add It!</Button>
             </Form>
