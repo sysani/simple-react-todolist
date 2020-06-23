@@ -37,8 +37,8 @@ class Main extends Component {
   }
 
   toggleLbl = (items) => {
-    const tasksComplete = items.filter(task => task['checked'] == true);
-    if (items.length == 0 || tasksComplete.length == items.length) {
+    const tasksComplete = items.filter(task => task['checked'] === true);
+    if (items.length === 0 || tasksComplete.length === items.length) {
       this.setState({
         lbl: 'All Tasks Complete!'
       })
